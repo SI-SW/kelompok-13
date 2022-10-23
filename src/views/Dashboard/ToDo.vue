@@ -25,7 +25,7 @@ export default{
 <template>
 <div>
     <ol>
-        <li v-for="(item, index) in g$list" :key="index">{{item}}</li>
+        <li v-for="(item, index) in g$list" :key="index">{{ item }}</li>
     </ol>
 </div>
 </template>

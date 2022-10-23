@@ -12,6 +12,11 @@ const auth = {
             name: "Signup",
             component: () => import('@/views/Auth/Signup.vue'),
           },
+          {
+            path: "/auth/signout",
+            name: "Signout",
+            component: () => import('@/views/Auth/Signout.vue'),
+          },
     ],
 };
 
