@@ -17,6 +17,17 @@
       </li>
       <li class="nav-item">
         <sidenav-item
+          url="/dashboard/todo"
+          :class="getRoute() === 'todo' ? 'active' : ''"
+          :navText="this.$store.state.isRTL ? 'لوحة القيادة' : 'ToDo'"
+        >
+          <template v-slot:icon>
+            <i class="ni ni-calendar-grid-58 text-primary text-sm opacity-10"></i>
+          </template>
+        </sidenav-item>
+      </li>
+      <li class="nav-item">
+        <sidenav-item
           url="/dashboard/tables"
           :class="getRoute() === 'tables' ? 'active' : ''"
           :navText="this.$store.state.isRTL ? 'الجداول' : 'Tables'"
@@ -88,16 +99,15 @@
           </template>
         </sidenav-item>
       </li>
-      <li class="nav-item">
-        <sidenav-item
-          url="/auth/signout"
-          :class="getRoute() === 'signout' ? 'active' : ''"
-          :navText="this.$store.state.isRTL ? 'اشتراك' : 'Sign Out'"
-        >
-          <template v-slot:icon>
+      <li class="nav-item" @click="logout">
+        <div class="nav-link">
+          <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+            <slot name="icon">
             <i class="ni ni-collection text-danger text-sm opacity-10"></i>
-          </template>
-        </sidenav-item>
+          </slot>
+          </div>
+          <span class="nav-link-text ms-1">Sign Out</span>
+        </div>
       </li>
     </ul>
   </div>
@@ -112,6 +122,8 @@
 <script>
 import SidenavItem from "./SidenavItem.vue";
 import SidenavCard from "./SidenavCard.vue";
+import { mapActions } from 'pinia';
+import d$auth from '@/stores/auth';
 
 export default {
   name: "SidenavList",
@@ -133,7 +145,20 @@ export default {
     getRoute() {
       const routeArr = this.$route.path.split("/");
       return routeArr[1];
-    }
+    },
+    getRoute() {
+      const routeArr = this.$route.path.split("/");
+      return routeArr[1];
+    },
+    ...mapActions(d$auth, ['a$logout']),
+    logout() {
+      try {
+        this.a$logout();
+        this.$router.replace({ name: 'Signin' });
+      } catch (e) {
+        console.log(e);
+      }
+    },
   }
 };
 </script>

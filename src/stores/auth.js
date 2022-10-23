@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { setCookies, certCookies } from "@/plugins/cookies";
+import { setCookies, certCookies, delCookies } from "@/plugins/cookies";
 
 import * as s$auth from "@/services/auth";
 
