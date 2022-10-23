@@ -115,7 +115,7 @@
                 <p class="text-sm mt-3 mb-0">
                   Already have an account?
                   <a
-                    href="javascript:;"
+                    href="/auth/signin"
                     class="text-dark font-weight-bolder"
                   >Sign in</a>
                 </p>
@@ -151,7 +151,8 @@ export default {
   data: () => ({
     //input
     input:{
-      username: '',
+      name: '',
+      email: '',
       password: '',
     },
   }),

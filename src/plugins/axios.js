@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getCookies, delCookies } from './cookies';
 
-// Restful API Config
+// Restful API Config 
 axios.defaults.headers['Content-Type'] = 'application/json';
 
 // Endpoint

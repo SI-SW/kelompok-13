@@ -2,7 +2,7 @@ import parseJwt from '@/plugins/parseJwt';
 
 const setCookies = (name, value, { datetime }) => {
   const d = new Date();
-  if (datetime) d.setTime(datetime);
+  if (datetime) d.setTime(datetime); 
   const expires = `expires=${d.toUTCString()}`  ;
   document.cookie = ` ${name}=${value};${expires};path=/;` ;
 };

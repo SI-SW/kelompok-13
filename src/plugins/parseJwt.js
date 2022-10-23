@@ -4,4 +4,4 @@ const parseJwt = (token) => {
     return parsedJwt;
 };
 
-export default parseJwt;
+export default parseJwt; 
