@@ -41,19 +41,6 @@
       </li>
       <li class="nav-item">
         <sidenav-item
-          url="/dashboard/todo"
-          :class="getRoute() === 'todo' ? 'active' : ''"
-          :navText="this.$store.state.isRTL ? 'الجداول' : 'TODO'"
-        >
-          <template v-slot:icon>
-            <i
-              class="ni ni-calendar-grid-58 text-primary text-sm opacity-10"
-            ></i>
-          </template>
-        </sidenav-item>
-      </li>
-      <li class="nav-item">
-        <sidenav-item
           url="/dashboard/billing"
           :class="getRoute() === 'billing' ? 'active' : ''"
           :navText="this.$store.state.isRTL ? 'الفواتیر' : 'Billing'"
