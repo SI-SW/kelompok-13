@@ -1,15 +1,15 @@
-import parseJwt from '@/plugins/parseJwt'
+import parseJwt from '@/plugins/parseJwt';
 
 const setCookies = (name, value, { datetime }) => {
   const d = new Date();
-  if (datetime) d.setTime(datetime);
-  const expires = `expires=${d.toUTCString()}`;
-  document.cookie = `${name}=${value};${expires};path=/;`;
+  if (datetime) d.setTime(datetime); 
+  const expires = `expires=${d.toUTCString()}`  ;
+  document.cookie = ` ${name}=${value};${expires};path=/;` ;
 };
 
 const getCookies = (name) => {
-  const cookies = `; ${document.cookie}`;
-  const byValue = cookies.split(`; ${name}=`);
+  const cookies = ` ; ${document.cookie}` ;
+  const byValue = cookies.split(` ; ${name}=` );
   if (byValue.length === 2) return byValue.pop().split(';').shift();
 };
 
@@ -31,7 +31,7 @@ const certCookies = () => {
   }
   return {
     id: undefined,
-    nam: undefined,
+    name: undefined,
     role: undefined,
     exp: undefined,
   };

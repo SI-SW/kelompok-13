@@ -5,13 +5,12 @@ import { getCookies, delCookies } from './cookies';
 axios.defaults.headers['Content-Type'] = 'application/json';
 
 // Endpoint
-const hostname = import.meta.env.VITE_BASE_API_URL
+const hostname = import.meta.env.VITE_BASE_API_URL;
 
 // Instance Creation
 const baseApi = axios.create({
   baseURL: hostname,
 });
-
 
 // Request Config
 baseApi.interceptors.request.use(
@@ -26,7 +25,7 @@ baseApi.interceptors.request.use(
   },
   (error) => {
     throw error;
-  }
+  },
 );
 
 // Response Config
@@ -37,7 +36,6 @@ baseApi.interceptors.response.use(
       case 401:
         delCookies('CERT');
         break;
-
       default:
         break;
     }
