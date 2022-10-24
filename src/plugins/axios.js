@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { getCookies, delCookies } from './cookies';
 
-// Restful API Config
-axios.defaults.headers['Content-Type'] = 'application/json'
+// Restful API Config 
+axios.defaults.headers['Content-Type'] = 'application/json';
 
 // Endpoint
 const hostname = import.meta.env.VITE_BASE_API_URL
