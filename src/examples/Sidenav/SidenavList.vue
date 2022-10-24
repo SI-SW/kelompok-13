@@ -30,6 +30,19 @@
       </li>
       <li class="nav-item">
         <sidenav-item
+          url="/dashboard/todo"
+          :class="getRoute() === 'todo' ? 'active' : ''"
+          :navText="this.$store.state.isRTL ? 'الجداول' : 'TODO'"
+        >
+          <template v-slot:icon>
+            <i
+              class="ni ni-calendar-grid-58 text-primary text-sm opacity-10"
+            ></i>
+          </template>
+        </sidenav-item>
+      </li>
+      <li class="nav-item">
+        <sidenav-item
           url="/dashboard/billing"
           :class="getRoute() === 'billing' ? 'active' : ''"
           :navText="this.$store.state.isRTL ? 'الفواتیر' : 'Billing'"
@@ -112,6 +125,8 @@
 <script>
 import SidenavItem from "./SidenavItem.vue";
 import SidenavCard from "./SidenavCard.vue";
+import { mapActions } from "pinia";
+import d$auth from "@/stores/auth";
 
 export default {
   name: "SidenavList",
@@ -133,7 +148,20 @@ export default {
     getRoute() {
       const routeArr = this.$route.path.split("/");
       return routeArr[1];
-    }
+    },
+    ...mapActions(d$auth, ["a$logout"]),
+    logout() {
+      try {
+        if (confirm("Are you sure you want to leave?") == true) {
+          this.$router.go(this.$router.currentRoute);
+          this.a$logout();
+        } else {
+          this.$router.replace(this.$router.currentRoute);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
   }
 };
 </script>
